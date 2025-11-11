@@ -1,0 +1,84 @@
+$if[$customID==advtest+]
+$if[$or[$checkContains[$json[rocks];($sum[$json[pos_x];1],$json[pos_y])]==true;$checkContains[$json[trees];($sum[$json[pos_x];1],$json[pos_y])]==true]==true]
+$jsonSetString[log;There's something blocking your way.]
+$else
+$jsonSetString[pos_x;$sum[$json[pos_x];1]]
+$endif 
+$elseif[$customID==advtest-]
+$if[$or[$checkContains[$json[rocks];($sub[$json[pos_x];1],$json[pos_y])]==true;$checkContains[$json[trees];($sub[$json[pos_x];1],$json[pos_y])]==true]==true]
+$jsonSetString[log;There's something blocking your way.]
+$else
+$jsonSetString[pos_x;$sub[$json[pos_x];1]]
+$endif
+$endif
+
+$if[$customID==advtesty+]
+$if[$or[$checkContains[$json[rocks];($json[pos_x],$sum[$json[pos_y];1])]==true;$checkContains[$json[trees];($json[pos_x],$sum[$json[pos_y];1])]==true]==true]
+$jsonSetString[log;There's something blocking your way.]
+$else
+$jsonSetString[pos_y;$sum[$json[pos_y];1]]
+$endif
+$elseif[$customID==advtesty-]
+$if[$or[$checkContains[$json[rocks];($json[pos_x],$sub[$json[pos_y];1])]==true;$checkContains[$json[trees];($json[pos_x],$sub[$json[pos_y];1])]==true]==true]
+$jsonSetString[log;There's something blocking your way.]
+$else
+$jsonSetString[pos_y;$sub[$json[pos_y];1]]
+$endif
+$endif
+
+$jsonSetString[plrpos;($json[pos_x],$json[pos_y])]
+
+$c[max_x;$sum[$json[pos_x];$json[x]]]
+$c[min_x;$sub[$json[pos_x];1]]
+$if[$json[showdevmsg]==true]$sendMessage[Grid pos: $json[min_x],$json[max_x]|$json[min_y],$json[max_y]
+$json[pos_x],$json[pos_y]
+;false]$endif
+
+$if[$json[pos_x]>$json[max_x]] -- User going out the grid on the x axis
+$c[x+;false]
+$jsonSetString[1_x;$json[pos_x]]
+$jsonSetString[2_x;$sum[$json[pos_x];1]]
+$jsonSetString[3_x;$sum[$json[pos_x];2]]
+$jsonSetString[4_x;$sum[$json[pos_x];3]]
+$jsonSetString[5_x;$sum[$json[pos_x];4]]
+$jsonSetString[max_x;$sum[$json[pos_x];$json[x]]]
+$jsonSetString[min_x;$json[pos_x]]
+$elseif[$json[pos_x]<$json[min_x]]
+$c[(x-);false]
+$jsonSetString[1_x;$sub[$json[pos_x];4]]
+$jsonSetString[2_x;$sub[$json[pos_x];3]]
+$jsonSetString[3_x;$sub[$json[pos_x];2]]
+$jsonSetString[4_x;$sub[$json[pos_x];1]]
+$jsonSetString[5_x;$json[pos_x]]
+$jsonSetString[max_x;$json[pos_x]]
+$jsonSetString[min_x;$sub[$json[pos_x];$json[x]]] 
+$else 
+$jsonSetString[1_x;$json[min_x]]
+$jsonSetString[2_x;$sum[$json[min_x];1]]
+$jsonSetString[3_x;$sum[$json[min_x];2]]
+$jsonSetString[4_x;$sum[$json[min_x];3]]
+$jsonSetString[5_x;$sum[$json[min_x];4]]
+
+$endif
+
+$if[$json[pos_y]>$json[max_y]] -- User going out the grid on the y axis
+$jsonSetString[1_y;$json[pos_y]]
+$jsonSetString[2_y;$sum[$json[pos_y];1]]
+$jsonSetString[3_y;$sum[$json[pos_y];2]]
+$jsonSetString[4_y;$sum[$json[pos_y];3]]
+$jsonSetString[max_y;$sum[$json[pos_y];$json[y]]]
+$jsonSetString[min_y;$json[pos_y]]
+$elseif[$json[pos_y]<$json[min_y]]
+$jsonSetString[1_y;$sub[$json[pos_y];3]]
+$jsonSetString[2_y;$sub[$json[pos_y];2]]
+$jsonSetString[3_y;$sub[$json[pos_y];1]]
+$jsonSetString[4_y;$json[pos_y]]
+$jsonSetString[max_y;$json[pos_y]]
+$jsonSetString[min_y;$sub[$json[pos_y];$json[y]]]
+$else 
+$jsonSetString[1_y;$json[min_y]]
+$jsonSetString[2_y;$sum[$json[min_y];1]]
+$jsonSetString[3_y;$sum[$json[min_y];2]]
+$jsonSetString[4_y;$sum[$json[min_y];3]]
+
+$endif
