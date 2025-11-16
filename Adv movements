@@ -1,11 +1,11 @@
 $if[$customID==advtest+]
-$if[$or[$checkContains[$json[rocks];($sum[$json[pos_x];1],$json[pos_y])]==true;$checkContains[$json[trees];($sum[$json[pos_x];1],$json[pos_y])]==true;$checkContains[$json[s2];($sum[$json[pos_x];1],$json[pos_y])]==true;$checkContains[$json[3];($sum[$json[pos_x];1],$json[pos_y])]==true]==true]
+$if[$or[$checkContains[$json[rocks];($sum[$json[pos_x];1],$json[pos_y])]==true;$checkContains[$json[trees];($sum[$json[pos_x];1],$json[pos_y])]==true;$checkContains[$json[s2];($sum[$json[pos_x];1],$json[pos_y])]==true;$checkContains[$json[s3];($sum[$json[pos_x];1],$json[pos_y])]==true]==true]
 $jsonSetString[log;There's something blocking your way.]
 $else
 $jsonSetString[pos_x;$sum[$json[pos_x];1]]
 $endif 
 $elseif[$customID==advtest-]
-$if[$or[$checkContains[$json[rocks];($sub[$json[pos_x];1],$json[pos_y])]==true;$checkContains[$json[trees];($sub[$json[pos_x];1],$json[pos_y])]==true;$checkContains[$json[s2];($sub[$json[pos_x];1],$json[pos_y])]==true;$checkContains[$json[3];($sub[$json[pos_x];1],$json[pos_y])]==true]==true]
+$if[$or[$checkContains[$json[rocks];($sub[$json[pos_x];1],$json[pos_y])]==true;$checkContains[$json[trees];($sub[$json[pos_x];1],$json[pos_y])]==true;$checkContains[$json[s2];($sub[$json[pos_x];1],$json[pos_y])]==true;$checkContains[$json[s3];($sub[$json[pos_x];1],$json[pos_y])]==true]==true]
 $jsonSetString[log;There's something blocking your way.]
 $else
 $jsonSetString[pos_x;$sub[$json[pos_x];1]]
