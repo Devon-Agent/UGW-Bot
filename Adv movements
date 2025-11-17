@@ -44,7 +44,6 @@ $jsonSetString[5_x;$sum[$json[pos_x];4]]
 $jsonSetString[max_x;$sum[$json[pos_x];$json[x]]]
 $jsonSetString[min_x;$json[pos_x]]
 $if[$checkContains[$joinSplitText[ ];($json[pos_x],$json[pos_y])]==false]
-$jsonSetString[chunks loaded;$sum[$json[chunks loaded];1]]
 $endif
 $elseif[$json[pos_x]<$json[min_x]]
 $c[(x-);false]
@@ -56,7 +55,6 @@ $jsonSetString[5_x;$json[pos_x]]
 $jsonSetString[max_x;$json[pos_x]]
 $jsonSetString[min_x;$sub[$json[pos_x];$json[x]]] 
 $if[$checkContains[$joinSplitText[ ];($json[pos_x],$json[pos_y])]==false]
-$jsonSetString[chunks loaded;$sum[$json[chunks loaded];1]]
 $endif
 $else 
 $jsonSetString[1_x;$json[min_x]]
@@ -75,7 +73,6 @@ $jsonSetString[4_y;$sum[$json[pos_y];3]]
 $jsonSetString[max_y;$sum[$json[pos_y];$json[y]]]
 $jsonSetString[min_y;$json[pos_y]]
 $if[$checkContains[$joinSplitText[ ];($json[pos_x],$json[pos_y])]==false]
-$jsonSetString[chunks loaded;$sum[$json[chunks loaded];1]]
 $endif
 $elseif[$json[pos_y]<$json[min_y]]
 $jsonSetString[1_y;$sub[$json[pos_y];3]]
@@ -85,7 +82,6 @@ $jsonSetString[4_y;$json[pos_y]]
 $jsonSetString[max_y;$json[pos_y]]
 $jsonSetString[min_y;$sub[$json[pos_y];$json[y]]]
 $if[$checkContains[$joinSplitText[ ];($json[pos_x],$json[pos_y])]==false]
-$jsonSetString[chunks loaded;$sum[$json[chunks loaded];1]]
 $endif
 $else 
 $jsonSetString[1_y;$json[min_y]]
